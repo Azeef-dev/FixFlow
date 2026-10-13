@@ -530,3 +530,4 @@ export default function PublicScanPage() {
     </div>
   );
 }
+
