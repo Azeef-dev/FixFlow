@@ -1,0 +1,9 @@
+{
+  "name": "fixflow-backend",
+  "version": "1.0.0",
+  "description": "FixFlow Backend API Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
