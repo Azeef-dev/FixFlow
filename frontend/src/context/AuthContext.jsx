@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('fixflow_user', JSON.stringify(res.data.user));
           }
         } catch {
-          // Token expired or invalid
           logout(false);
         }
       }
@@ -55,10 +54,9 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem('fixflow_token');
     localStorage.removeItem('fixflow_user');
-    if (notify) toast('Logged out successfully', { icon: '👋' });
+    if (notify) toast.success('Logged out successfully');
   };
 
-  // Quick switcher for demo evaluation (Admin <-> Technician)
   const quickSwitchRole = async (targetRole) => {
     try {
       const email = targetRole === 'admin' ? 'admin@fixflow.io' : 'tech@fixflow.io';
@@ -70,7 +68,7 @@ export const AuthProvider = ({ children }) => {
         setUser(user);
         localStorage.setItem('fixflow_token', token);
         localStorage.setItem('fixflow_user', JSON.stringify(user));
-        toast.success(`Switched view to ${user.name} (${user.role.toUpperCase()})`);
+        toast.success(`Switched active role to ${user.name} (${user.role.toUpperCase()})`);
         return true;
       }
     } catch {
